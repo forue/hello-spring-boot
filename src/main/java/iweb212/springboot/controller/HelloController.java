@@ -16,7 +16,7 @@ public class HelloController {
     @GetMapping("/json")
     public User user(){
         return new User(
-                "张三",1l,
+                "张三",1L,
                 new Address("长安街266号","丰台区","北京市"));
     }
 }
