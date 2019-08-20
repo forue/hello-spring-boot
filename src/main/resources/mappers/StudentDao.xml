@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="iweb212.springboot.dao.StudentDao">
+    <resultMap type="iweb212.springboot.model.Student" id="studentResult">
+        <id property="sid" column="id" />
+        <result property="sname" column="sname"/>
+        <result property="sage" column="sage"/>
+        <result property="sclass" column="sclass"/>
+    </resultMap>
+
+    <select id="findAllStudent" resultMap="studentResult">
+		select sid, sname, sage, sclass from students
+	</select>
+
+    <select id="findById" parameterType="int" resultMap="studentResult">
+		select sid, sname, sage, sclass from students where sid = #{sid}
+	</select>
+    <insert id="insertStudent" parameterType="student" useGeneratedKeys="true" keyColumn="sid">
+		insert into student(sname, sage, sclass)
+		values (#{sname}, #{sage}, #{sclass})
+	</insert>
+</mapper>
